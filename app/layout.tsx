@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
+// Self-hosted Geist (offline-safe). Replaces next/font/google, which needs
+// fonts.googleapis.com at build time.
+const geistSans = localFont({
+  src: [
+    { path: "./fonts/geist-latin-400-normal.woff2", weight: "400" },
+    { path: "./fonts/geist-latin-700-normal.woff2", weight: "700" },
+  ],
   variable: "--font-geist-sans",
-  subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const geistMono = localFont({
+  src: [
+    { path: "./fonts/geist-mono-latin-400-normal.woff2", weight: "400" },
+    { path: "./fonts/geist-mono-latin-700-normal.woff2", weight: "700" },
+  ],
   variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
